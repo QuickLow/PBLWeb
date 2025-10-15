@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Administrasi Persuratan — Desa Seruat 2</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <style>
+    body {font-family:'Poppins',sans-serif;background:#f9fafb;margin:0;}
+    main {max-width:1000px;margin:40px auto;padding:20px;background:#fff;border-radius:10px;box-shadow:0 3px 10px rgba(0,0,0,0.1);}
+    h1 {text-align:center;color:#1b5e20;margin-bottom:30px;}
+    .surat-list {display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:10px;margin-bottom:30px;}
+    .surat-list button {background:none;border:none;color:#1b5e20;font-weight:600;text-align:left;padding:10px 15px;cursor:pointer;}
+    .surat-list button:hover {color:#2e7d32;text-decoration:underline;}
+    form {display:none;border-top:2px solid #1b5e20;padding-top:20px;}
+    fieldset {border:1px solid #ccc;border-radius:10px;padding:20px;margin-bottom:20px;}
+    legend {font-weight:600;color:#1b5e20;}
+    label {display:block;margin-bottom:8px;font-weight:500;}
+    input,select,textarea {width:100%;padding:10px;margin-bottom:15px;border:1px solid #ccc;border-radius:6px;}
+    button[type="submit"] {background:#1b5e20;color:#fff;border:none;padding:10px 20px;border-radius:6px;cursor:pointer;}
+    button[type="submit"]:hover {background:#2e7d32;}
+    .success {background:#e8f5e9;color:#2e7d32;text-align:center;padding:15px;border-radius:8px;margin-bottom:20px;display:none;}
+  </style>
+</head>
+<body>
+
+  <!-- Header dari halaman utama -->
+  <header class="site-header">
+    <div class="container header-bar">
+      <a class="brand" href="#">
+        <img src="assets/img/logo.png" alt="Logo Desa Seruat 2" />
+        <div class="brand-text">
+          <strong>Desa Seruat 2</strong>
+          <span>Kabupaten Kubu Raya</span>
+        </div>
+      </a>
+
+      <button class="nav-toggle" aria-label="Menu" id="navToggle">☰</button>
+
+      <nav class="nav" id="navMenu">
+        <a href="index.html">Home</a>
+        <div class="dropdown">
+          <a href="#" class="dropdown-toggle">Profil Desa <span class="arrow">▾</span></a>
+          <div class="dropdown-menu">
+            <a href="visi_misi.html">Visi &amp; Misi</a>
+            <a href="#">Sejarah Desa</a>
+            <a href="#">Peta Desa</a>
+            <a href="#">Perangkat Desa</a>
+          </div>
+        </div>
+        <a href="#">Infografis</a>
+        <a class="active" href="admin_surat.html">Administrasi Persuratan</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Konten utama -->
+  <main>
+    <h1>Form Permohonan Surat Keterangan</h1>
+
+    <!-- Daftar Jenis Surat -->
+    <div class="surat-list">
+      <!-- <button data-surat="ahliWaris">• Surat Keterangan Ahli Waris</button> -->
+      <!-- <button data-surat="belumMenikah">• Surat Keterangan Belum Pernah Menikah</button> -->
+      <button data-surat="tidakMampu">• Surat Keterangan Tidak Mampu</button>
+      <button data-surat="domisili">• Surat Keterangan Domisili</button>
+      <button data-surat="kematian">• Surat Keterangan Kematian</button>
+    </div>
+
+    <!-- Pesan sukses -->
+    <div class="success" id="successMessage">✅ Permohonan surat berhasil dikirim!</div>
+
+    <!-- Form Surat Keterangan Ahli Waris
+    <form id="form-ahliWaris">
+      <fieldset>
+        <legend>Data Pemohon</legend>
+        <label>Nama Pemohon</label>
+        <input type="text" required>
+        <label>NIK</label>
+        <input type="text" required>
+        <label>Alamat</label>
+        <textarea required></textarea>
+      </fieldset>
+      <fieldset>
+        <legend>Data Pewaris</legend>
+        <label>Nama Pewaris</label>
+        <input type="text" required>
+        <label>Tanggal Meninggal</label>
+        <input type="date" required>
+      </fieldset>
+      <button type="submit">Kirim Permohonan</button>
+    </form> -->
+
+    <!-- Form Surat Keterangan Tidak Mampu -->
+    <form id="form-tidakMampu">
+      <fieldset>
+        <legend>Data Pemohon</legend>
+        <label>Nama Lengkap</label>
+        <input type="text" required>
+        <label>NIK</label>
+        <input type="text" required>
+        <label>Alamat</label>
+        <textarea required></textarea>
+      </fieldset>
+      <fieldset>
+        <legend>Keperluan Surat</legend>
+        <label>Digunakan untuk</label>
+        <input type="text" placeholder="Contoh: Pengajuan Beasiswa" required>
+      </fieldset>
+      <button type="submit">Kirim Permohonan</button>
+    </form>
+
+    <!-- Form Surat Belum Pernah Menikah -->
+    <!-- <form id="form-belumMenikah">
+      <fieldset>
+        <legend>Data Pemohon</legend>
+        <label>Nama Lengkap</label>
+        <input type="text" required>
+        <label>NIK</label>
+        <input type="text" required>
+        <label>Umur</label>
+        <input type="number" required>
+      </fieldset>
+      <fieldset>
+        <legend>Keterangan</legend>
+        <label>Alasan permohonan</label>
+        <input type="text" placeholder="Untuk keperluan administrasi nikah" required>
+      </fieldset>
+      <button type="submit">Kirim Permohonan</button>
+    </form> -->
+
+    <!-- Form Surat Domisili -->
+    <form id="form-domisili">
+      <fieldset>
+        <legend>Data Pemohon</legend>
+        <label>Nama Lengkap</label>
+        <input type="text" required>
+        <label>NIK</label>
+        <input type="text" required>
+        <label>Alamat Domisili</label>
+        <textarea required></textarea>
+      </fieldset>
+      <button type="submit">Kirim Permohonan</button>
+    </form>
+
+    <!-- Form Surat Kematian -->
+    <form id="form-kematian">
+      <fieldset>
+        <legend>Data Almarhum</legend>
+        <label>Nama Lengkap</label>
+        <input type="text" required>
+        <label>Tanggal Meninggal</label>
+        <input type="date" required>
+        <label>Penyebab Kematian</label>
+        <input type="text">
+      </fieldset>
+      <fieldset>
+        <legend>Pelapor</legend>
+        <label>Nama Pelapor</label>
+        <input type="text" required>
+        <label>Hubungan dengan Almarhum</label>
+        <input type="text" required>
+      </fieldset>
+      <button type="submit">Kirim Permohonan</button>
+    </form>
+  </main>
+
+  <!-- Footer dari halaman utama -->
+  <footer id="footer">
+    <div class="footer-wrap">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <img src="assets/img/logo.png" alt="Logo Desa Seruat 2" class="footer-logo" />
+          <h3>Pemerintah Desa Seruat 2</h3>
+          <p>Jl. Seruat Raya No.01 Dusun Seruat<br>Desa Seruat 2, Kecamatan Sungai Kakap<br>Kabupaten Kubu Raya, Kalimantan Barat</p>
+        </div>
+        <div class="footer-col">
+          <h3>Hubungi Kami</h3>
+          <p>📞 0822-5034-5977</p>
+          <p>✉️ alfiandwiprasetyo236@gmail.com</p>
+        </div>
+        <div class="footer-col">
+          <h3>Nomor Telepon Penting</h3>
+          <p><a href="#">HENDRIKUS AMIN</a></p>
+          <p><a href="#">DEDY FEDERIKUS</a></p>
+        </div>
+        <div class="footer-col">
+          <h3>Jelajahi</h3>
+          <p><a href="#">Website Kemendesa</a></p>
+          <p><a href="#">Website Kemendagri</a></p>
+          <p><a href="#">Website Kabupaten Kubu Raya</a></p>
+          <p><a href="#">Cek Bansos Kemensos</a></p>
+        </div>
+      </div>
+      <div class="footer-bottom">© 2025 Powered by PT Digital Desa Indonesia</div>
+    </div>
+  </footer>
+
+  <script>
+    const buttons = document.querySelectorAll('.surat-list button');
+    const forms = document.querySelectorAll('form');
+    const successMsg = document.getElementById('successMessage');
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        forms.forEach(f => f.style.display = 'none');
+        const selected = document.getElementById('form-' + btn.dataset.surat);
+        if (selected) selected.style.display = 'block';
+        successMsg.style.display = 'none';
+        window.scrollTo({ top: selected.offsetTop - 100, behavior: 'smooth' });
+      });
+    });
+
+    forms.forEach(form => {
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+        successMsg.style.display = 'block';
+        form.reset();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+  </script>
+
+</body>
+</html>
