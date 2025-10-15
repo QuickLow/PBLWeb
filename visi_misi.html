@@ -1,80 +1,106 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Visi & Misi | Simulasi Web Desa</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Visi & Misi — Desa Seruat 2</title>
+
+  <!-- Font + CSS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
-  <!-- Header sama seperti index -->
+  <!-- Header (disamakan dengan home) -->
   <header class="site-header">
-    <div class="header-bar">
-      <a href="index.html" class="brand">
-        <img src="assets/img/logo.png" alt="Logo Desa">
+    <div class="container header-bar">
+      <a class="brand" href="index.html">
+        <img src="assets/img/logo.png" alt="Logo Desa Seruat 2" />
         <div class="brand-text">
-          <strong>SIMULASI WEB DESA</strong>
-          <span>Desa Digital Maju & Mandiri</span>
+          <strong>Desa Seruat 2</strong>
+          <span>Kabupaten Kubu Raya</span>
         </div>
       </a>
-      <nav class="nav">
+
+      <button class="nav-toggle" aria-label="Menu" id="navToggle">☰</button>
+
+      <nav class="nav" id="navMenu">
         <a href="index.html">Home</a>
+
         <div class="dropdown">
-    <a href="#" class="dropdown-toggle">
-      Profil Desa <span class="arrow">▾</span>
-    </a>
-
-    <!-- Semua submenu HARUS di sini -->
-    <div class="dropdown-menu">
-      <a href="visi_misi.html">Visi &amp; Misi</a>
-      <a href="#">Sejarah Desa</a>
-      <a href="#">Peta Desa</a>
-      <a href="#">Perangkat Desa</a>
-    </div>
-  </div>
-
-  <a href="#">Infografis</a>
-  <a href="#">Administrasi Persuratan</a>
+          <a href="#" class="dropdown-toggle">Profil Desa <span class="arrow">▾</span></a>
+          <div class="dropdown-menu">
+            <a class="active" href="visi_misi.html">Visi &amp; Misi</a>
+            <a href="sejarah.html">Sejarah Desa</a>
+            <a href="peta.html">Peta Desa</a>
+            <a href="struktur.html">Struktur Desa</a>
           </div>
         </div>
+
+        <a href="#">Infografis</a>
+        <a href="admin_surat.html">Administrasi Persuratan</a>
       </nav>
     </div>
   </header>
 
-  <!-- Konten Visi & Misi -->
-  <section id="visimisi" style="padding:120px 20px;background:#f6f7f8;color:#222;text-align:center;">
-    <h2 style="color:#0b5d3b;font-size:2.2rem;font-weight:800;margin-bottom:10px;">Visi</h2>
-    <h3 style="color:#0b5d3b;font-weight:700;margin-bottom:40px;">
-      Mewujudkan Desa Simulasi yang Berkibar (Berkreatif, Inovatif, Budaya, Agamis, dan Rukun)
-    </h3>
-
-    <h2 style="color:#0b5d3b;font-size:2rem;font-weight:800;margin-top:60px;">Misi</h2>
-    <ul style="list-style:none;max-width:800px;margin:30px auto 0;text-align:left;line-height:1.8;font-weight:600;">
-      <li>1. Meningkatkan kualitas sumber daya manusia dan kehidupan beragama.</li>
-      <li>2. Mengembangkan perekonomian desa berbasis potensi lokal yang berdaya saing.</li>
-      <li>3. Meningkatkan pembangunan sarana dan prasarana desa.</li>
-      <li>4. Memanfaatkan sumber daya alam secara berkelanjutan dan ramah lingkungan.</li>
-      <li>5. Mewujudkan pemerintahan desa yang transparan, partisipatif, dan inovatif.</li>
-      <li>6. Mewujudkan masyarakat desa yang aman, tentram, dan sejahtera.</li>
-    </ul>
+  <!-- Hero kecil untuk halaman -->
+  <section class="hero-visi">
+    <div class="text">
+      <h1>Visi &amp; Misi</h1>
+      <p>Desa Seruat 2 — Menuju Desa Digital</p>
+    </div>
   </section>
 
-  <!-- Footer -->
+  <!-- Konten Visi & Misi -->
+  <section class="visi-misi">
+    <h2>Visi</h2>
+    <p><strong>Mewujudkan Desa Seruat 2 yang Berkreatif, Inovatif, Budaya, Agamis, dan Rukun.</strong></p>
+
+    <h2>Misi</h2>
+    <ol>
+      <li>Meningkatkan kualitas sumber daya manusia dan kehidupan beragama.</li>
+      <li>Mengembangkan perekonomian desa berbasis potensi lokal yang berdaya saing.</li>
+      <li>Meningkatkan pembangunan sarana dan prasarana desa.</li>
+      <li>Memanfaatkan sumber daya alam secara berkelanjutan dan ramah lingkungan.</li>
+      <li>Mewujudkan pemerintahan desa yang transparan, partisipatif, dan inovatif.</li>
+      <li>Mewujudkan masyarakat desa yang aman, tentram, dan sejahtera.</li>
+    </ol>
+  </section>
+
+  <!-- Footer (boleh pakai footer versi home, jika sudah ada copy saja) -->
   <footer id="footer">
     <div class="footer-wrap">
       <div class="footer-grid">
         <div class="footer-col">
-          <img src="assets/img/logo.png" class="footer-logo" alt="Logo Desa">
-          <h3>Desa Simulasi</h3>
-          <p>Website resmi simulasi digital desa untuk pengembangan teknologi dan pelayanan masyarakat.</p>
+          <img src="assets/img/logo.png" class="footer-logo" alt="Logo Desa" />
+          <h3>Pemerintah Desa Seruat 2</h3>
+          <p>Jl. Seruat Raya No.01 Dusun Seruat<br>Desa Seruat 2, Kecamatan Sungai Kakap<br>Kabupaten Kubu Raya, Kalimantan Barat</p>
+        </div>
+        <div class="footer-col">
+          <h3>Hubungi Kami</h3>
+          <p>📞 0822-5034-5977</p>
+          <p>✉️ alfiandwiprasetyo236@gmail.com</p>
+        </div>
+        <div class="footer-col">
+          <h3>Nomor Telepon Penting</h3>
+          <p><a href="#">HENDRIKUS AMIN</a></p>
+          <p><a href="#">DEDY FEDERIKUS</a></p>
+        </div>
+        <div class="footer-col">
+          <h3>Jelajahi</h3>
+          <p><a href="#">Website Kemendesa</a></p>
+          <p><a href="#">Website Kemendagri</a></p>
+          <p><a href="#">Website Kabupaten Kubu Raya</a></p>
+          <p><a href="#">Cek Bansos Kemensos</a></p>
         </div>
       </div>
-      <div class="footer-bottom">
-        &copy; 2025 Simulasi Web Desa. All Rights Reserved.
-      </div>
+      <div class="footer-bottom">© 2025 Powered by PT Digital Desa Indonesia</div>
     </div>
   </footer>
 
+  <!-- Script toggle nav (pakai yang sama seperti home) -->
+  <script src="assets/js/main.js"></script>
 </body>
 </html>
