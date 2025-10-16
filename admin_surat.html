@@ -4,30 +4,144 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Administrasi Persuratan — Desa Seruat 2</title>
+
+  <!-- Google Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
   <link rel="stylesheet" href="assets/css/style.css" />
+
   <style>
-    body {font-family:'Poppins',sans-serif;background:#f9fafb;margin:0;}
-    main {max-width:1000px;margin:40px auto;padding:20px;background:#fff;border-radius:10px;box-shadow:0 3px 10px rgba(0,0,0,0.1);}
-    h1 {text-align:center;color:#1b5e20;margin-bottom:30px;}
-    .surat-list {display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:10px;margin-bottom:30px;}
-    .surat-list button {background:none;border:none;color:#1b5e20;font-weight:600;text-align:left;padding:10px 15px;cursor:pointer;}
-    .surat-list button:hover {color:#2e7d32;text-decoration:underline;}
-    form {display:none;border-top:2px solid #1b5e20;padding-top:20px;}
-    fieldset {border:1px solid #ccc;border-radius:10px;padding:20px;margin-bottom:20px;}
-    legend {font-weight:600;color:#1b5e20;}
-    label {display:block;margin-bottom:8px;font-weight:500;}
-    input,select,textarea {width:100%;padding:10px;margin-bottom:15px;border:1px solid #ccc;border-radius:6px;}
-    button[type="submit"] {background:#1b5e20;color:#fff;border:none;padding:10px 20px;border-radius:6px;cursor:pointer;}
-    button[type="submit"]:hover {background:#2e7d32;}
-    .success {background:#e8f5e9;color:#2e7d32;text-align:center;padding:15px;border-radius:8px;margin-bottom:20px;display:none;}
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f9fafb;
+      margin: 0;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #1b5e20;
+      margin-bottom: 30px;
+    }
+
+    .content-section {
+      margin-bottom: 40px;
+    }
+
+    .content-section h2 {
+      text-align: center;
+      color: #1b5e20;
+      margin-bottom: 20px;
+    }
+
+    .form-surat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .form-surat-grid ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .form-surat-grid li {
+      background: #e8f5e9;
+      color: #1b5e20;
+      font-weight: 600;
+      padding: 10px 15px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+
+    .form-surat-grid li:hover {
+      background: #c8e6c9;
+      transform: translateX(5px);
+    }
+
+    form {
+      display: none;
+      border-top: 2px solid #1b5e20;
+      padding-top: 20px;
+    }
+
+    fieldset {
+      border: 1px solid #e0e0e0;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 25px;
+      background: #ffffff;
+    }
+
+    legend {
+      font-weight: 700;
+      color: #1b5e20;
+      padding: 0 10px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+      color: #37474f;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #cfd8dc;
+      border-radius: 8px;
+      font-size: 15px;
+      background-color: #f9fafc;
+      margin-bottom: 15px;
+    }
+
+    input::placeholder, textarea::placeholder {
+      color: #9e9e9e;
+    }
+
+    button[type="submit"] {
+      background: #1b5e20;
+      color: white;
+      padding: 12px 25px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    button[type="submit"]:hover {
+      background: #2e7d32;
+    }
+
+    .success {
+      background: #e8f5e9;
+      color: #2e7d32;
+      text-align: center;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 20px;
+      display: none;
+    }
   </style>
 </head>
-<body>
 
-  <!-- Header dari halaman utama -->
+<body>
+  <!-- Header -->
   <header class="site-header">
     <div class="container header-bar">
       <a class="brand" href="#">
@@ -37,9 +151,7 @@
           <span>Kabupaten Kubu Raya</span>
         </div>
       </a>
-
       <button class="nav-toggle" aria-label="Menu" id="navToggle">☰</button>
-
       <nav class="nav" id="navMenu">
         <a href="index.html">Home</a>
         <div class="dropdown">
@@ -61,114 +173,978 @@
   <main>
     <h1>Form Permohonan Surat Keterangan</h1>
 
-    <!-- Daftar Jenis Surat -->
-    <div class="surat-list">
-      <!-- <button data-surat="ahliWaris">• Surat Keterangan Ahli Waris</button> -->
-      <!-- <button data-surat="belumMenikah">• Surat Keterangan Belum Pernah Menikah</button> -->
-      <button data-surat="tidakMampu">• Surat Keterangan Tidak Mampu</button>
-      <button data-surat="domisili">• Surat Keterangan Domisili</button>
-      <button data-surat="kematian">• Surat Keterangan Kematian</button>
-    </div>
+    <!-- ✅ Daftar Jenis Surat -->
+<section class="content-section">
+  <h2>Daftar Jenis Surat</h2>
+  <div class="form-surat-grid">
+    <ul>
+      <li data-surat="tidakMampu">Surat Keterangan Tidak Mampu</li>
+      <li data-surat="domisili">Surat Keterangan Domisili</li>
+      <li data-surat="kematian">Surat Keterangan Kematian</li>
+      <li data-surat="belumMenikah">Surat Keterangan Belum Pernah Menikah</li>
+      <li data-surat="suratkehilangan">Surat Keterangan Kehilangan</li>
+      <li data-surat="suratketerangangarap">Surat Keterangan Garap</li>
+      <li data-surat="suratpengantarperkawinan">Surat Pengantar Perkawinan</li>
+      <li data-surat="suratketeranganbedanamadannik">Surat Keterangan Beda Nama dan NIK</li>
+      <li data-surat="suratizinkeramaian">Surat Pengantar Izin Keramaian</li>
+      <li data-surat="suratizinbepergian">Surat Keterangan Izin Bepergian</li>
+      <li data-surat="suratahliwaris">Surat Keterangan Ahli Waris</li>
+      <li data-surat="suratpindah">Surat Keterangan Pindah</li>
+      <li data-surat="suratTidakAdaDiTempat">Surat Keterangan Tidak Ada Di Tempat</li>
+    </ul>
+  </div>
+</section>
 
-    <!-- Pesan sukses -->
-    <div class="success" id="successMessage">✅ Permohonan surat berhasil dikirim!</div>
+<style>
+.content-section {
+  background: #fff;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  max-width: 900px;
+  margin: 30px auto;
+}
 
-    <!-- Form Surat Keterangan Ahli Waris
-    <form id="form-ahliWaris">
-      <fieldset>
-        <legend>Data Pemohon</legend>
-        <label>Nama Pemohon</label>
-        <input type="text" required>
-        <label>NIK</label>
-        <input type="text" required>
-        <label>Alamat</label>
-        <textarea required></textarea>
-      </fieldset>
-      <fieldset>
-        <legend>Data Pewaris</legend>
-        <label>Nama Pewaris</label>
-        <input type="text" required>
-        <label>Tanggal Meninggal</label>
-        <input type="date" required>
-      </fieldset>
-      <button type="submit">Kirim Permohonan</button>
-    </form> -->
+.content-section h2 {
+  text-align: center;
+  background-color: #0b6623; /* hijau tua seperti logo */
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.form-surat-grid ul {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Membagi dua kolom */
+  gap: 10px 30px; /* Jarak antar kolom dan baris */
+  padding: 0;
+  margin: 0;
+}
+
+.form-surat-grid li {
+  color: #008000;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.form-surat-grid li:hover {
+  color: #004d00;
+  text-decoration: underline;
+}
+</style>
+
 
     <!-- Form Surat Keterangan Tidak Mampu -->
     <form id="form-tidakMampu">
       <fieldset>
         <legend>Data Pemohon</legend>
-        <label>Nama Lengkap</label>
-        <input type="text" required>
-        <label>NIK</label>
-        <input type="text" required>
-        <label>Alamat</label>
-        <textarea required></textarea>
+        <label for="hp">No HP/WhatsApp Pemohon</label>
+        <input type="tel" id="hp" placeholder="Contoh: 0823xxxxxxxx" required>
+
+        <label for="email">Alamat Email Pemohon</label>
+        <input type="email" id="email" placeholder="Alamat Email (Opsional)">
+
+        <label for="nik">NIK</label>
+        <input type="text" id="nik" maxlength="16" placeholder="NIK" required>
+
+        <label for="kk">No KK</label>
+        <input type="text" id="kk" maxlength="16" placeholder="No Kartu Keluarga" required>
+
+        <label for="nama">Nama Lengkap Pemohon</label>
+        <input type="text" id="nama" placeholder="Nama Lengkap" required>
+
+        <label for="tempatLahir">Tempat Lahir</label>
+        <input type="text" id="tempatLahir" placeholder="Tempat Lahir" required>
+
+        <label for="tglLahir">Tanggal Lahir</label>
+        <input type="date" id="tglLahir" required>
+
+        <label for="jk">Jenis Kelamin</label>
+        <select id="jk" required>
+          <option value="">-- Pilih Jenis Kelamin --</option>
+          <option value="Laki-laki">Laki-laki</option>
+          <option value="Perempuan">Perempuan</option>
+        </select>
+
+        <label for="status">Status Perkawinan</label>
+        <select id="status" required>
+          <option value="">-- Pilih Status --</option>
+          <option value="Belum Kawin">Belum Kawin</option>
+          <option value="Kawin">Kawin</option>
+          <option value="Cerai Hidup">Cerai Hidup</option>
+          <option value="Cerai Mati">Cerai Mati</option>
+        </select>
+
+        <label for="agama">Agama</label>
+        <select id="agama" required>
+          <option value="">-- Pilih Agama --</option>
+          <option>Islam</option>
+          <option>Kristen</option>
+          <option>Katolik</option>
+          <option>Hindu</option>
+          <option>Buddha</option>
+          <option>Konghucu</option>
+        </select>
+
+        <label for="pekerjaan">Pekerjaan</label>
+        <input type="text" id="pekerjaan" placeholder="Pekerjaan" required>
+
+        <label for="alamatAsal">Alamat Asal</label>
+        <textarea id="alamatAsal" placeholder="Alamat sesuai KTP" required></textarea>
+
+        <label for="dusun">Dusun</label>
+        <input type="text" id="dusun" placeholder="Nama Dusun" required>
       </fieldset>
+
+      <fieldset>
+        <legend>Data Kepala Keluarga</legend>
+        <label for="namaKK">Nama Lengkap Kepala Keluarga</label>
+        <input type="text" id="namaKK" placeholder="Nama Lengkap Kepala Keluarga" required>
+
+        <label for="tempatKK">Tempat Lahir Kepala Keluarga</label>
+        <input type="text" id="tempatKK" placeholder="Tempat Lahir Kepala Keluarga" required>
+
+        <label for="tglKK">Tanggal Lahir Kepala Keluarga</label>
+        <input type="date" id="tglKK" required>
+
+        <label for="jkKK">Jenis Kelamin Kepala Keluarga</label>
+        <select id="jkKK" required>
+          <option value="">-- Pilih Jenis Kelamin --</option>
+          <option value="Laki-laki">Laki-laki</option>
+          <option value="Perempuan">Perempuan</option>
+        </select>
+
+        <label for="statusKK">Status Perkawinan Kepala Keluarga</label>
+        <select id="statusKK" required>
+          <option value="">-- Pilih Status --</option>
+          <option value="Belum Kawin">Belum Kawin</option>
+          <option value="Kawin">Kawin</option>
+          <option value="Cerai Hidup">Cerai Hidup</option>
+          <option value="Cerai Mati">Cerai Mati</option>
+        </select>
+
+        <label for="agamaKK">Agama Kepala Keluarga</label>
+        <select id="agamaKK" required>
+          <option value="">-- Pilih Agama --</option>
+          <option>Islam</option>
+          <option>Kristen</option>
+          <option>Katolik</option>
+          <option>Hindu</option>
+          <option>Buddha</option>
+          <option>Konghucu</option>
+        </select>
+
+        <label for="pekerjaanKK">Pekerjaan Kepala Keluarga</label>
+        <input type="text" id="pekerjaanKK" placeholder="Pekerjaan Kepala Keluarga" required>
+
+        <label for="alamatKK">Alamat Kepala Keluarga</label>
+        <textarea id="alamatKK" placeholder="Alamat Kepala Keluarga" required></textarea>
+      </fieldset>
+
       <fieldset>
         <legend>Keperluan Surat</legend>
-        <label>Digunakan untuk</label>
-        <input type="text" placeholder="Contoh: Pengajuan Beasiswa" required>
+        <label for="keperluan">Digunakan untuk</label>
+        <input type="text" id="keperluan" placeholder="Contoh: Pengajuan Beasiswa" required>
       </fieldset>
+
       <button type="submit">Kirim Permohonan</button>
     </form>
 
-    <!-- Form Surat Belum Pernah Menikah -->
-    <!-- <form id="form-belumMenikah">
-      <fieldset>
-        <legend>Data Pemohon</legend>
-        <label>Nama Lengkap</label>
-        <input type="text" required>
-        <label>NIK</label>
-        <input type="text" required>
-        <label>Umur</label>
-        <input type="number" required>
-      </fieldset>
-      <fieldset>
-        <legend>Keterangan</legend>
-        <label>Alasan permohonan</label>
-        <input type="text" placeholder="Untuk keperluan administrasi nikah" required>
-      </fieldset>
-      <button type="submit">Kirim Permohonan</button>
-    </form> -->
+    <!-- Form Surat Keterangan Domisili -->
+<form id="form-domisili">
+  <fieldset>
+    <legend>Data Pemohon</legend>
 
-    <!-- Form Surat Domisili -->
-    <form id="form-domisili">
-      <fieldset>
-        <legend>Data Pemohon</legend>
-        <label>Nama Lengkap</label>
-        <input type="text" required>
-        <label>NIK</label>
-        <input type="text" required>
-        <label>Alamat Domisili</label>
-        <textarea required></textarea>
-      </fieldset>
+    <label for="namaDomisili">Nama Lengkap Pemohon</label>
+    <input type="text" id="namaDomisili" placeholder="Masukkan nama lengkap pemohon" required>
+
+    <label for="tempatDomisili">Tempat Lahir</label>
+    <input type="text" id="tempatDomisili" placeholder="Masukkan tempat lahir" required>
+
+    <label for="tglDomisili">Tanggal Lahir</label>
+    <input type="date" id="tglDomisili" required>
+
+    <label for="agamaDomisili">Agama</label>
+    <select id="agamaDomisili" required>
+      <option value="">-- Pilih Agama --</option>
+      <option>Islam</option>
+      <option>Kristen</option>
+      <option>Katolik</option>
+      <option>Hindu</option>
+      <option>Buddha</option>
+      <option>Konghucu</option>
+    </select>
+
+    <label for="hpDomisili">No HP / WhatsApp Pemohon</label>
+    <input type="tel" id="hpDomisili" placeholder="Contoh: 0823xxxxxxxx" required>
+
+    <label for="emailDomisili">Alamat Email Pemohon</label>
+    <input type="email" id="emailDomisili" placeholder="Masukkan alamat email">
+
+    <label for="jkDomisili">Jenis Kelamin</label>
+    <select id="jkDomisili" required>
+      <option value="">-- Pilih Jenis Kelamin --</option>
+      <option value="Laki-laki">Laki-laki</option>
+      <option value="Perempuan">Perempuan</option>
+    </select>
+
+    <label for="statusDomisili">Status Nikah</label>
+    <select id="statusDomisili" required>
+      <option value="">-- Pilih Status --</option>
+      <option value="Belum Menikah">Belum Menikah</option>
+      <option value="Menikah">Menikah</option>
+      <option value="Duda">Duda</option>
+      <option value="Janda">Janda</option>
+    </select>
+
+    <label for="pekerjaanDomisili">Pekerjaan</label>
+    <input type="text" id="pekerjaanDomisili" placeholder="Masukkan pekerjaan" required>
+
+    <label for="nikDomisili">NIK</label>
+    <input type="text" id="nikDomisili" maxlength="16" placeholder="Masukkan NIK pemohon" required>
+
+    <label for="alamatDomisili">Alamat</label>
+    <textarea id="alamatDomisili" rows="3" placeholder="Masukkan alamat lengkap" required></textarea>
+
+    <label for="wnDomisili">Warga Negara</label>
+    <input type="text" id="wnDomisili" placeholder="Contoh: Indonesia" required>
+  </fieldset>
+
+  <fieldset>
+    <legend>Keperluan Surat</legend>
+    <label for="keperluanDomisili">Keperluan</label>
+    <input type="text" id="keperluanDomisili" placeholder="Contoh: Persyaratan administrasi tempat tinggal" required>
+  </fieldset>
+
+  <button type="submit">Kirim Permohonan</button>
+</form>
+
+<!-- ✅ FORM SURAT KETERANGAN KEMATIAN -->
+<form id="form-kematian">
+  <h2>Surat Keterangan Kematian</h2>
+
+  <label>Nama Lengkap Pelapor:</label>
+  <input type="text" name="namaPelapor">
+
+  <label>No Hp/Whatsapp Pelapor:</label>
+  <input type="text" name="noHpPelapor">
+
+  <label>Alamat Email Pelapor:</label>
+  <input type="email" name="emailPelapor">
+
+  <label>Hubungan Pelapor:</label>
+  <input type="text" name="hubunganPelapor">
+
+  <label>Nama Lengkap Almarhum/Almarhumah:</label>
+  <input type="text" name="namaAlmarhum">
+
+  <label>Jenis Kelamin:</label>
+  <select name="jenisKelamin">
+    <option>Laki-laki</option>
+    <option>Perempuan</option>
+  </select>
+
+  <label>Alamat:</label>
+  <textarea name="alamat"></textarea>
+
+  <label>Tempat Lahir:</label>
+  <input type="text" name="tempatLahir">
+
+  <label>Tanggal Lahir:</label>
+  <input type="date" name="tanggalLahir">
+
+  <label>Tanggal Meninggal Dunia:</label>
+  <input type="date" name="tanggalMeninggal">
+
+  <label>Kewarganegaraan:</label>
+  <input type="text" name="kewarganegaraan">
+
+  <label>Agama:</label>
+  <input type="text" name="agama">
+
+  <label>Status Perkawinan:</label>
+  <input type="text" name="statusPerkawinan">
+
+  <label>Pekerjaan:</label>
+  <input type="text" name="pekerjaan">
+
+  <label>Tempat Meninggal Dunia:</label>
+  <input type="text" name="tempatMeninggal">
+
+  <label>Penyebab Meninggal Dunia:</label>
+  <input type="text" name="penyebabMeninggal">
+
+  <label>No KK:</label>
+  <input type="text" name="noKK">
+
+  <label>NIK:</label>
+  <input type="text" name="nik">
+
+  <button type="submit">Kirim Permohonan</button>
+</form>
+
+
+    <!-- ✅ FORM BELUM PERNAH MENIKAH -->
+    <form id="form-belumMenikah">
+      <h2>Surat Keterangan Belum Pernah Menikah</h2>
+
+      <label>Nama Lengkap Pemohon:</label>
+      <input type="text" name="namaPemohon">
+
+      <label>No Hp/Whatsapp Pelapor:</label>
+      <input type="text" name="noHp">
+
+      <label>Alamat Email Pelapor:</label>
+      <input type="email" name="email">
+
+      <label>Jenis Kelamin:</label>
+      <select name="jenisKelamin">
+        <option>Laki-laki</option>
+        <option>Perempuan</option>
+      </select>
+
+      <label>Alamat:</label>
+      <textarea name="alamat"></textarea>
+
+      <label>Tempat Lahir:</label>
+      <input type="text" name="tempatLahir">
+
+      <label>Tanggal Lahir:</label>
+      <input type="date" name="tanggalLahir">
+
+      <label>Agama:</label>
+      <input type="text" name="agama">
+
+      <label>Status Nikah:</label>
+      <input type="text" name="statusNikah" value="Belum Pernah Menikah">
+
+      <label>Pekerjaan:</label>
+      <input type="text" name="pekerjaan">
+
+      <label>NIK:</label>
+      <input type="text" name="nik">
+
+      <label>Warga Negara:</label>
+      <input type="text" name="wargaNegara">
+
+      <label>Nama Ayah:</label>
+      <input type="text" name="namaAyah">
+
+      <label>Alamat Orang Tua:</label>
+      <textarea name="alamatOrtu"></textarea>
+
       <button type="submit">Kirim Permohonan</button>
     </form>
 
-    <!-- Form Surat Kematian -->
-    <form id="form-kematian">
-      <fieldset>
-        <legend>Data Almarhum</legend>
-        <label>Nama Lengkap</label>
-        <input type="text" required>
-        <label>Tanggal Meninggal</label>
-        <input type="date" required>
-        <label>Penyebab Kematian</label>
-        <input type="text">
-      </fieldset>
-      <fieldset>
-        <legend>Pelapor</legend>
-        <label>Nama Pelapor</label>
-        <input type="text" required>
-        <label>Hubungan dengan Almarhum</label>
-        <input type="text" required>
-      </fieldset>
+     <!-- ✅ FORM  SURAT KETERANGAN KEHILANGAN -->
+     <form id="form-suratkehilangan">
+      <h2>Surat Keterangan kehilangan</h2>
+
+      <label>Nama Lengkap Pemohon:</label>
+      <input type="text" name="namaPemohon">
+
+      <label>No Hp/Whatsapp Pelapor:</label>
+      <input type="text" name="noHp">
+
+      <label>Alamat Email Pelapor:</label>
+      <input type="email" name="email">
+
+      <label>Jenis Kelamin:</label>
+      <select name="jenisKelamin">
+        <option>Laki-laki</option>
+        <option>Perempuan</option>
+      </select>
+
+      <label>Alamat:</label>
+      <textarea name="alamat"></textarea>
+
+      <label>Catatan Kehilangan:</label>
+      <textarea name="catatankehilangan"></textarea>
+
+      
       <button type="submit">Kirim Permohonan</button>
     </form>
+
+    <!-- ✅ FORM SURAT PENGANTAR PERKAWINAN -->
+<form id="form-suratpengantarperkawinan">
+  <h2>Surat Pengantar Perkawinan</h2>
+
+  <label>No Hp/Whatsapp Pemohon:</label>
+  <input type="text" name="noHp" required>
+
+  <label>Alamat Email Pemohon:</label>
+  <input type="email" name="emailPelapor" required>
+
+  <label>Nama Lengkap Pemohon:</label>
+  <input type="text" name="namaPelapor" required>
+
+  <label>NIK:</label>
+  <input type="text" name="nik" required>
+
+  <label>Tempat Lahir:</label>
+  <input type="text" name="tempatLahir" required>
+
+  <label>Tanggal Lahir:</label>
+  <input type="date" name="tanggalLahir" required>
+
+  <label>Alamat:</label>
+  <textarea name="alamat" rows="2" required></textarea>
+
+  <label>Kewarganegaraan:</label>
+  <input type="text" name="kewarganegaraan" required>
+
+  <label>Agama:</label>
+  <input type="text" name="agama" required>
+
+  <label>Pekerjaan:</label>
+  <input type="text" name="pekerjaan" required>
+
+  <label>Status Perkawinan:</label>
+  <select name="statusPerkawinan" required>
+    <option value="">-- Pilih Status --</option>
+    <option value="Belum Kawin">Belum Kawin</option>
+    <option value="Kawin">Kawin</option>
+    <option value="Cerai Hidup">Cerai Hidup</option>
+    <option value="Cerai Mati">Cerai Mati</option>
+  </select>
+
+  <label>Istri/Suami ke-:</label>
+  <input type="number" name="istriSuamiKe" min="1">
+
+  <label>Nama Istri/Suami Terdahulu (Kosongkan jika belum pernah menikah):</label>
+  <input type="text" name="namaPasanganTerdahulu">
+
+  <hr>
+  <h3>Data Ayah</h3>
+
+  <label>Nama Ayah:</label>
+  <input type="text" name="namaAyah" required>
+
+  <label>NIK Ayah:</label>
+  <input type="text" name="nikAyah">
+
+  <label>Jenis Kelamin Ayah:</label>
+  <input type="text" name="jenisKelaminAyah" value="Laki-laki" readonly>
+
+  <label>Tempat Lahir Ayah:</label>
+  <input type="text" name="tempatLahirAyah">
+
+  <label>Tanggal Lahir Ayah:</label>
+  <input type="date" name="tanggalLahirAyah">
+
+  <label>Kewarganegaraan Ayah:</label>
+  <input type="text" name="kewarganegaraanAyah">
+
+  <label>Agama Ayah:</label>
+  <input type="text" name="agamaAyah">
+
+  <label>Pekerjaan Ayah:</label>
+  <input type="text" name="pekerjaanAyah">
+
+  <label>Alamat Ayah:</label>
+  <textarea name="alamatAyah" rows="2"></textarea>
+
+  <hr>
+  <h3>Data Ibu</h3>
+
+  <label>Nama Lengkap Ibu:</label>
+  <input type="text" name="namaIbu" required>
+
+  <label>NIK Ibu:</label>
+  <input type="text" name="nikIbu">
+
+  <label>Jenis Kelamin Ibu:</label>
+  <input type="text" name="jenisKelaminIbu" value="Perempuan" readonly>
+
+  <label>Tempat Lahir Ibu:</label>
+  <input type="text" name="tempatLahirIbu">
+
+  <label>Tanggal Lahir Ibu:</label>
+  <input type="date" name="tanggalLahirIbu">
+
+  <label>Kewarganegaraan Ibu:</label>
+  <input type="text" name="kewarganegaraanIbu">
+
+  <label>Agama Ibu:</label>
+  <input type="text" name="agamaIbu">
+
+  <label>Pekerjaan Ibu:</label>
+  <input type="text" name="pekerjaanIbu">
+
+  <label>Alamat Ibu:</label>
+  <textarea name="alamatIbu" rows="2"></textarea>
+
+  <button type="submit">Kirim Permohonan</button>
+</form>
+
+
+<!-- ✅ FORM SURAT KETERANGAN GARAP -->
+<form id="form-suratketerangangarap">
+  <h2>Surat Keterangan Garap</h2>
+
+  <label>Nama Lengkap Pelapor:</label>
+  <input type="text" name="namaPelapor">
+
+  <label>No Hp/Whatsapp Pelapor:</label>
+  <input type="text" name="noHpPelapor">
+
+  <label>Alamat Email Pelapor:</label>
+  <input type="email" name="emailPelapor">
+
+  <label>NIK:</label>
+  <input type="text" name="nik">
+
+  <label>Alamat:</label>
+  <textarea name="alamat"></textarea>
+
+  <label>Luas Lahan Tani Sawah Garapan(Meter):</label>
+  <input type="text" name="luastanah">
+
+  <label>Jenis:</label>
+  <input type="text" name="jenis">
+
+  <label>Lama Usaha (Tahun):</label>
+  <input type="text" name="lamausaha">
+
+  <button type="submit">Kirim Permohonan</button>
+</form>
+
+<!-- ✅ FORM SURAT KETERANGAN BEDA NAMA DAN NIK -->
+<form id="form-suratketeranganbedanamadannik">
+  <h2>Surat Keterangan Beda Nama dan NIK</h2>
+
+  <label>Nama Lengkap Pemohon:</label>
+  <input type="text" name="namaPemohon" required>
+
+  <label>No Hp/Whatsapp Pemohon:</label>
+  <input type="text" name="noHp" required>
+
+  <label>NIK:</label>
+  <input type="text" name="nik" required>
+
+  <label>Tempat Lahir:</label>
+  <input type="text" name="tempatLahir" required>
+
+  <label>Tanggal Lahir Pemohon:</label>
+  <input type="date" name="tanggalLahir" required>
+
+  <label>Alamat Email Pemohon:</label>
+  <input type="email" name="emailPemohon" required>
+
+  <label>Jenis Kelamin:</label>
+  <select name="jenisKelamin" required>
+    <option value="">-- Pilih Jenis Kelamin --</option>
+    <option value="Laki-laki">Laki-laki</option>
+    <option value="Perempuan">Perempuan</option>
+  </select>
+
+  <label>Pekerjaan:</label>
+  <input type="text" name="pekerjaan" required>
+
+  <label>Alamat:</label>
+  <textarea name="alamat" rows="2" required></textarea>
+
+  <hr>
+  <h3>Data Perbedaan</h3>
+
+  <label>NIK/Nama yang Benar:</label>
+  <input type="text" name="nikNamaBenar" required>
+
+  <label>NIK/Nama yang Salah:</label>
+  <input type="text" name="nikNamaSalah" required>
+
+  <button type="submit">Kirim Permohonan</button>
+</form>
+
+<!-- ✅ FORM SURAT PENGANTAR IZIN KERAMAIAN -->
+<form id="form-suratizinkeramaian">
+  <h2>Surat Pengantar Izin Keramaian</h2>
+
+  <label>Nama Lengkap Pemohon:</label>
+  <input type="text" name="namaPemohon" required>
+
+  <label>No Hp/Whatsapp Pemohon:</label>
+  <input type="text" name="noHp" required>
+
+  <label>Alamat Email Pemohon:</label>
+  <input type="email" name="emailPemohon" required>
+
+  <label>Pekerjaan:</label>
+  <input type="text" name="pekerjaan" required>
+
+  <label>Alamat Asal:</label>
+  <textarea name="alamatAsal" rows="2" required></textarea>
+
+  <label>Deskripsi Acara:</label>
+  <textarea name="deskripsiAcara" rows="3" placeholder="Contoh: Pernikahan, pentas musik, atau acara adat" required></textarea>
+
+  <label>Tanggal Acara:</label>
+  <input type="date" name="tanggalAcara" required>
+
+  <label>Jam Acara:</label>
+  <input type="time" name="jamAcara" required>
+
+  <button type="submit">Kirim Permohonan</button>
+</form>
+
+<!-- ✅ FORM SURAT KETERANGAN IZIN BEPERGIAN -->
+<form id="form-suratizinbepergian">
+  <h2>Surat Keterangan Izin Bepergian</h2>
+
+  <label for="nama">Nama Lengkap Pemohon:</label><br>
+  <input type="text" id="nama" name="nama" placeholder="Masukkan nama lengkap" required><br><br>
+
+  <label for="nohp">No Hp/Whatsapp Pemohon:</label><br>
+  <input type="tel" id="nohp" name="nohp" placeholder="Masukkan nomor HP/WhatsApp" required><br><br>
+
+  <label for="email">Alamat Email Pemohon:</label><br>
+  <input type="email" id="email" name="email" placeholder="Masukkan alamat email" required><br><br>
+
+  <label for="nik">NIK:</label><br>
+  <input type="text" id="nik" name="nik" placeholder="Masukkan NIK" required><br><br>
+
+  <label for="tempatlahir">Tempat Lahir:</label><br>
+  <input type="text" id="tempatlahir" name="tempatlahir" placeholder="Masukkan tempat lahir" required><br><br>
+
+  <label for="tanggallahir">Tanggal Lahir:</label><br>
+  <input type="date" id="tanggallahir" name="tanggallahir" required><br><br>
+
+  <label for="jeniskelamin">Jenis Kelamin:</label><br>
+  <select id="jeniskelamin" name="jeniskelamin" required>
+    <option value="">-- Pilih Jenis Kelamin --</option>
+    <option value="Laki-laki">Laki-laki</option>
+    <option value="Perempuan">Perempuan</option>
+  </select><br><br>
+
+  <label for="agama">Agama:</label><br>
+  <input type="text" id="agama" name="agama" placeholder="Masukkan agama" required><br><br>
+
+  <label for="pekerjaan">Pekerjaan:</label><br>
+  <input type="text" id="pekerjaan" name="pekerjaan" placeholder="Masukkan pekerjaan" required><br><br>
+
+  <label for="warganegara">Warga Negara:</label><br>
+  <input type="text" id="warganegara" name="warganegara" placeholder="Masukkan kewarganegaraan" required><br><br>
+
+  <label for="alamat">Alamat:</label><br>
+  <textarea id="alamat" name="alamat" rows="3" placeholder="Masukkan alamat lengkap" required></textarea><br><br>
+
+  <label for="tujuan">Izin Bepergian ke (Tujuan):</label><br>
+  <input type="text" id="tujuan" name="tujuan" placeholder="Masukkan tujuan bepergian" required><br><br>
+
+  <button type="submit">Kirim Permohonan</button>
+</form>
+
+<!-- ✅ FORM SURAT KETERANGAN AHLI WARIS -->
+<form id="form-suratahliwaris">
+  <h2>Surat Keterangan Ahli Waris</h2>
+
+  <!-- 🔹 Data Pemohon -->
+  <label for="namaPemohon">Nama Lengkap Pemohon:</label><br>
+  <input type="text" id="namaPemohon" name="namaPemohon" placeholder="Masukkan nama lengkap pemohon" required><br><br>
+
+  <label for="nohpPemohon">No Hp/Whatsapp Pemohon:</label><br>
+  <input type="tel" id="nohpPemohon" name="nohpPemohon" placeholder="Masukkan nomor HP/WhatsApp" required><br><br>
+
+  <label for="emailPemohon">Alamat Email Pemohon:</label><br>
+  <input type="email" id="emailPemohon" name="emailPemohon" placeholder="Masukkan alamat email" required><br><br>
+
+  <!-- 🔹 Data Pewaris -->
+  <label for="namaPewaris">Nama Lengkap Pewaris:</label><br>
+  <input type="text" id="namaPewaris" name="namaPewaris" placeholder="Masukkan nama pewaris" required><br><br>
+
+  <label for="jkPewaris">Jenis Kelamin Pewaris:</label><br>
+  <select id="jkPewaris" name="jkPewaris" required>
+    <option value="">-- Pilih Jenis Kelamin --</option>
+    <option value="Laki-laki">Laki-laki</option>
+    <option value="Perempuan">Perempuan</option>
+  </select><br><br>
+
+  <label for="tanggalMeninggal">Meninggal Pada Tanggal:</label><br>
+  <input type="date" id="tanggalMeninggal" name="tanggalMeninggal" required><br><br>
+
+  <label for="lokasiKubur">Dikebumikan di:</label><br>
+  <input type="text" id="lokasiKubur" name="lokasiKubur" placeholder="Masukkan lokasi pemakaman" required><br><br>
+
+  <label for="jumlahAnak">Jumlah Anak:</label><br>
+  <input type="number" id="jumlahAnak" name="jumlahAnak" min="0" placeholder="Masukkan jumlah anak" required><br><br>
+
+  <label for="noSuratKematian">Nomor Surat Keterangan Kematian:</label><br>
+  <input type="text" id="noSuratKematian" name="noSuratKematian" placeholder="Masukkan nomor surat kematian" required><br><br>
+
+  <label for="tglSuratKematian">Tanggal Surat Kematian:</label><br>
+  <input type="date" id="tglSuratKematian" name="tglSuratKematian" required><br><br>
+
+  <!-- 🔹 Data Ahli Waris -->
+  <h3>Data Ahli Waris</h3>
+  <div id="ahliWarisContainer">
+    <div class="ahliWarisItem">
+      <label>NIK Ahli Waris:</label><br>
+      <input type="text" name="nikAhliWaris[]" placeholder="Masukkan NIK ahli waris" required><br><br>
+
+      <label>Nama Lengkap Ahli Waris:</label><br>
+      <input type="text" name="namaAhliWaris[]" placeholder="Masukkan nama ahli waris" required><br><br>
+
+      <label>Tempat Lahir Ahli Waris:</label><br>
+      <input type="text" name="tempatLahirAhliWaris[]" placeholder="Masukkan tempat lahir ahli waris" required><br><br>
+
+      <label>Tanggal Lahir Ahli Waris:</label><br>
+      <input type="date" name="tglLahirAhliWaris[]" required><br><br>
+
+      <label>Pekerjaan Ahli Waris:</label><br>
+      <input type="text" name="pekerjaanAhliWaris[]" placeholder="Masukkan pekerjaan ahli waris" required><br><br>
+
+      <label>Alamat Ahli Waris:</label><br>
+      <textarea name="alamatAhliWaris[]" rows="2" placeholder="Masukkan alamat ahli waris" required></textarea><br><br>
+
+      <button type="button" class="hapusAhliWaris">Hapus Data Ahli Waris</button>
+      <hr>
+    </div>
+  </div>
+  <button type="button" id="tambahAhliWaris">+ Tambah Data Ahli Waris</button>
+  <br><br>
+
+  <!-- 🔹 Data Saksi -->
+  <h3>Data Saksi</h3>
+  <label for="saksi1">Saksi 1:</label><br>
+  <input type="text" id="saksi1" name="saksi1" placeholder="Kosongkan jika tidak ada"><br><br>
+
+  <label for="saksi2">Saksi 2:</label><br>
+  <input type="text" id="saksi2" name="saksi2" placeholder="Kosongkan jika tidak ada"><br><br>
+
+  <label for="saksi3">Saksi 3:</label><br>
+  <input type="text" id="saksi3" name="saksi3" placeholder="Kosongkan jika tidak ada"><br><br>
+
+  <button type="submit">Kirim Permohonan</button>
+</form>
+
+<script>
+  // 🔸 Tambah dan hapus data ahli waris dinamis
+  document.getElementById('tambahAhliWaris').addEventListener('click', function() {
+    const container = document.getElementById('ahliWarisContainer');
+    const newItem = document.createElement('div');
+    newItem.classList.add('ahliWarisItem');
+    newItem.innerHTML = `
+      <label>NIK Ahli Waris:</label><br>
+      <input type="text" name="nikAhliWaris[]" placeholder="Masukkan NIK ahli waris" required><br><br>
+      <label>Nama Lengkap Ahli Waris:</label><br>
+      <input type="text" name="namaAhliWaris[]" placeholder="Masukkan nama ahli waris" required><br><br>
+      <label>Tempat Lahir Ahli Waris:</label><br>
+      <input type="text" name="tempatLahirAhliWaris[]" placeholder="Masukkan tempat lahir ahli waris" required><br><br>
+      <label>Tanggal Lahir Ahli Waris:</label><br>
+      <input type="date" name="tglLahirAhliWaris[]" required><br><br>
+      <label>Pekerjaan Ahli Waris:</label><br>
+      <input type="text" name="pekerjaanAhliWaris[]" placeholder="Masukkan pekerjaan ahli waris" required><br><br>
+      <label>Alamat Ahli Waris:</label><br>
+      <textarea name="alamatAhliWaris[]" rows="2" placeholder="Masukkan alamat ahli waris" required></textarea><br><br>
+      <button type="button" class="hapusAhliWaris">Hapus Data Ahli Waris</button>
+      <hr>
+    `;
+    container.appendChild(newItem);
+  });
+
+  document.addEventListener('click', function(e) {
+    if (e.target && e.target.classList.contains('hapusAhliWaris')) {
+      e.target.parentElement.remove();
+    }
+  });
+</script>
+
+<!-- ✅ FORM SURAT KETERANGAN PINDAH -->
+<form id="form-suratpindah">
+  <h2>Surat Keterangan Pindah</h2>
+
+  <!-- 🔹 Data Pemohon -->
+  <label>No Hp/Whatsapp Pemohon:</label><br>
+  <input type="tel" name="noHpPemohon" placeholder="Masukkan No HP/WhatsApp" required><br><br>
+
+  <label>Alamat Email Pemohon:</label><br>
+  <input type="email" name="emailPemohon" placeholder="Masukkan Alamat Email" required><br><br>
+
+  <label>Nama Lengkap Pemohon:</label><br>
+  <input type="text" name="namaPemohon" placeholder="Masukkan Nama Lengkap Pemohon" required><br><br>
+
+  <label>Tempat Lahir:</label><br>
+  <input type="text" name="tempatLahir" placeholder="Masukkan Tempat Lahir" required><br><br>
+
+  <label>Tanggal Lahir:</label><br>
+  <input type="date" name="tanggalLahir" required><br><br>
+
+  <label>Jenis Kelamin:</label><br>
+  <select name="jenisKelamin" required>
+    <option value="">-- Pilih Jenis Kelamin --</option>
+    <option value="Laki-laki">Laki-laki</option>
+    <option value="Perempuan">Perempuan</option>
+  </select><br><br>
+
+  <label>Agama:</label><br>
+  <input type="text" name="agama" placeholder="Masukkan Agama" required><br><br>
+
+  <label>Status Perkawinan:</label><br>
+  <input type="text" name="statusPerkawinan" placeholder="Masukkan Status Perkawinan" required><br><br>
+
+  <label>Pendidikan:</label><br>
+  <input type="text" name="pendidikan" placeholder="Masukkan Pendidikan Terakhir" required><br><br>
+
+  <label>Pekerjaan:</label><br>
+  <input type="text" name="pekerjaan" placeholder="Masukkan Pekerjaan" required><br><br>
+
+  <label>Alamat Asal:</label><br>
+  <textarea name="alamatAsal" rows="2" placeholder="Masukkan Alamat Asal" required></textarea><br><br>
+
+  <label>NIK:</label><br>
+  <input type="text" name="nik" placeholder="Masukkan NIK Pemohon" required><br><br>
+
+  <label>No Kartu Keluarga:</label><br>
+  <input type="text" name="noKK" placeholder="Masukkan Nomor KK" required><br><br>
+
+  <label>Alamat Tujuan / Alamat Pindah:</label><br>
+  <textarea name="alamatTujuan" rows="2" placeholder="Masukkan Alamat Tujuan Pindah" required></textarea><br><br>
+
+  <label>Kelurahan:</label><br>
+  <input type="text" name="kelurahan" placeholder="Masukkan Nama Kelurahan" required><br><br>
+
+  <label>Kecamatan:</label><br>
+  <input type="text" name="kecamatan" placeholder="Masukkan Nama Kecamatan" required><br><br>
+
+  <label>Kabupaten:</label><br>
+  <input type="text" name="kabupaten" placeholder="Masukkan Nama Kabupaten" required><br><br>
+
+  <label>Provinsi:</label><br>
+  <input type="text" name="provinsi" placeholder="Masukkan Nama Provinsi" required><br><br>
+
+  <label>Alasan Pindah:</label><br>
+  <textarea name="alasanPindah" rows="2" placeholder="Masukkan Alasan Pindah" required></textarea><br><br>
+
+  <!-- 🔹 Data Pengikut -->
+  <h3>PENGIKUT</h3>
+  <div id="pengikutContainer">
+    <div class="pengikutItem">
+      <label>Nama Lengkap Pengikut:</label><br>
+      <input type="text" name="namaPengikut[]" placeholder="Nama Lengkap Pengikut" required><br><br>
+
+      <label>Jenis Kelamin:</label><br>
+      <select name="jenisKelaminPengikut[]" required>
+        <option value="">Pilih Jenis Kelamin</option>
+        <option value="Laki-laki">Laki-laki</option>
+        <option value="Perempuan">Perempuan</option>
+      </select><br><br>
+
+      <label>Hubungan dalam Keluarga:</label><br>
+      <input type="text" name="hubunganKeluarga[]" placeholder="Contoh: Anak, Istri, Suami" required><br><br>
+
+      <label>Keterangan:</label><br>
+      <textarea name="keterangan[]" rows="2" placeholder="Masukkan keterangan jika ada"></textarea><br><br>
+
+      <button type="button" class="hapusPengikut" style="background-color:#b30000; color:white; border:none; padding:5px 10px; border-radius:4px;">DELETE</button>
+      <hr>
+    </div>
+  </div>
+
+  <button type="button" id="tambahPengikut" style="background-color:#004d26; color:white; border:none; padding:8px 12px; border-radius:4px;">TAMBAH DATA PENGIKUT</button>
+  <br><br>
+
+  <button type="submit" style="background-color:#006400; color:white; border:none; padding:10px 16px; border-radius:4px;">AJUKAN</button>
+</form>
+
+<script>
+  // Tambah data pengikut
+  document.getElementById('tambahPengikut').addEventListener('click', function() {
+    const container = document.getElementById('pengikutContainer');
+    const newItem = document.createElement('div');
+    newItem.classList.add('pengikutItem');
+    newItem.innerHTML = `
+      <label>Nama Lengkap Pengikut:</label><br>
+      <input type="text" name="namaPengikut[]" placeholder="Nama Lengkap Pengikut" required><br><br>
+
+      <label>Jenis Kelamin:</label><br>
+      <select name="jenisKelaminPengikut[]" required>
+        <option value="">Pilih Jenis Kelamin</option>
+        <option value="Laki-laki">Laki-laki</option>
+        <option value="Perempuan">Perempuan</option>
+      </select><br><br>
+
+      <label>Hubungan dalam Keluarga:</label><br>
+      <input type="text" name="hubunganKeluarga[]" placeholder="Contoh: Anak, Istri, Suami" required><br><br>
+
+      <label>Keterangan:</label><br>
+      <textarea name="keterangan[]" rows="2" placeholder="Masukkan keterangan jika ada"></textarea><br><br>
+
+      <button type="button" class="hapusPengikut" style="background-color:#b30000; color:white; border:none; padding:5px 10px; border-radius:4px;">DELETE</button>
+      <hr>
+    `;
+    container.appendChild(newItem);
+  });
+
+  // Hapus data pengikut
+  document.addEventListener('click', function(e) {
+    if (e.target && e.target.classList.contains('hapusPengikut')) {
+      e.target.parentElement.remove();
+    }
+  });
+</script>
+
+<!-- ✅ FORM SURAT KETERANGAN TIDAK ADA DI TEMPAT -->
+<form id="form-suratTidakAdaDiTempat">
+  <h2>Surat Keterangan Tidak Ada Di Tempat</h2>
+
+  <!-- 🔹 Data Pemohon -->
+  <label>No Hp/Whatsapp Pemohon:</label><br>
+  <input type="tel" name="noHpPemohon" placeholder="Masukkan No HP/WhatsApp" required><br><br>
+
+  <label>Alamat Email Pemohon:</label><br>
+  <input type="email" name="emailPemohon" placeholder="Masukkan Alamat Email" required><br><br>
+
+  <label>Nama Lengkap Pemohon:</label><br>
+  <input type="text" name="namaPemohon" placeholder="Masukkan Nama Lengkap Pemohon" required><br><br>
+
+  <label>Tempat Lahir:</label><br>
+  <input type="text" name="tempatLahir" placeholder="Masukkan Tempat Lahir" required><br><br>
+
+  <label>Tanggal Lahir:</label><br>
+  <input type="date" name="tanggalLahir" required><br><br>
+
+  <label>NIK:</label><br>
+  <input type="text" name="nik" placeholder="Masukkan NIK Pemohon" required><br><br>
+
+  <label>Agama:</label><br>
+  <input type="text" name="agama" placeholder="Masukkan Agama" required><br><br>
+
+  <label>Jenis Kelamin:</label><br>
+  <select name="jenisKelamin" required>
+    <option value="">-- Pilih Jenis Kelamin --</option>
+    <option value="Laki-laki">Laki-laki</option>
+    <option value="Perempuan">Perempuan</option>
+  </select><br><br>
+
+  <label>Alamat Asal:</label><br>
+  <textarea name="alamatAsal" rows="2" placeholder="Masukkan Alamat Asal" required></textarea><br><br>
+
+  <!-- 🔹 Deskripsi Keterangan -->
+  <label>Deskripsi:</label><br>
+  <textarea name="deskripsi" id="deskripsi" rows="3" placeholder="Silakan isi sesuai format yang disediakan"></textarea><br><br>
+
+  <button type="button" id="isiFormatOtomatis" style="background-color:#007200; color:white; border:none; padding:6px 10px; border-radius:4px;">Gunakan Format Otomatis</button><br><br>
+
+  <button type="submit" style="background-color:#006400; color:white; border:none; padding:10px 16px; border-radius:4px;">AJUKAN</button>
+</form>
+
+<script>
+  // Tombol untuk isi format otomatis deskripsi
+  document.getElementById('isiFormatOtomatis').addEventListener('click', function() {
+    document.getElementById('deskripsi').value = 
+      "Yang bersangkutan di atas benar sedang tidak ada di tempat, dan saat ini sedang berdomisili di Kab/Kota ............., Provinsi ............";
+  });
+</script>
+
+
+    <!-- Pesan sukses -->
+    <div class="success" id="successMessage">✅ Permohonan surat berhasil dikirim!</div>
   </main>
 
-  <!-- Footer dari halaman utama -->
+  <!-- Footer -->
   <footer id="footer">
     <div class="footer-wrap">
       <div class="footer-grid">
@@ -199,18 +1175,22 @@
     </div>
   </footer>
 
+  <!-- Script -->
   <script>
-    const buttons = document.querySelectorAll('.surat-list button');
+    const suratItems = document.querySelectorAll('.form-surat-grid li');
     const forms = document.querySelectorAll('form');
     const successMsg = document.getElementById('successMessage');
 
-    buttons.forEach(btn => {
-      btn.addEventListener('click', () => {
+    suratItems.forEach(item => {
+      item.addEventListener('click', () => {
         forms.forEach(f => f.style.display = 'none');
-        const selected = document.getElementById('form-' + btn.dataset.surat);
-        if (selected) selected.style.display = 'block';
         successMsg.style.display = 'none';
-        window.scrollTo({ top: selected.offsetTop - 100, behavior: 'smooth' });
+        const idForm = 'form-' + item.dataset.surat;
+        const selectedForm = document.getElementById(idForm);
+        if (selectedForm) {
+          selectedForm.style.display = 'block';
+          window.scrollTo({ top: selectedForm.offsetTop - 100, behavior: 'smooth' });
+        }
       });
     });
 
@@ -223,6 +1203,5 @@
       });
     });
   </script>
-
 </body>
 </html>
