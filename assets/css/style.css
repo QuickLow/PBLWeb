@@ -13,7 +13,7 @@ body{font-family:'Poppins',system-ui,Segoe UI,Roboto,Arial,sans-serif;color:#fff
 
 /* ====== HEADER ====== */
 .site-header{
-  position:fixed; inset:0 0 auto 0; z-index:50;
+  position:fixed; inset:0 0 auto 0; z-index:9999;
   background:linear-gradient(to bottom, rgba(0,0,0,.35), rgba(0,0,0,0));
   -webkit-backdrop-filter:saturate(140%) blur(4px);
   backdrop-filter:saturate(140%) blur(4px);
@@ -22,6 +22,19 @@ body{font-family:'Poppins',system-ui,Segoe UI,Roboto,Arial,sans-serif;color:#fff
   max-width:1200px; margin:0 auto; display:flex; align-items:center; gap:16px;
   padding:14px 20px;
 }
+
+/* header bar (dipakai semua halaman) */
+.header-bar{
+  max-width:1200px;
+  margin:10px auto 0;
+  padding:10px 18px;
+  border-radius:12px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.18);
+  box-shadow:0 6px 22px rgba(0,0,0,.18) inset;
+  display:flex; align-items:center; gap:18px;
+}
+
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff}
 .brand img{width:48px;height:48px;border-radius:12px;border:2px solid rgba(255,255,255,.6);background:#fff}
 .brand-text strong{display:block;font-weight:800;letter-spacing:.3px}
@@ -35,7 +48,6 @@ body{font-family:'Poppins',system-ui,Segoe UI,Roboto,Arial,sans-serif;color:#fff
   content:""; position:absolute; left:0; right:0; bottom:-6px; height:4px;
   border-radius:2px; background:#fff;
 }
-
 .nav-toggle{display:none;margin-left:auto;background:var(--glass);border:1px solid rgba(255,255,255,.3);color:#fff;
   padding:8px 10px;border-radius:10px;font-size:20px}
 
@@ -116,16 +128,53 @@ body{font-family:'Poppins',system-ui,Segoe UI,Roboto,Arial,sans-serif;color:#fff
 .sambutan-link a{display:inline-block;margin-top:18px;font-weight:800;color:#0d3d1e;text-decoration:none;border-bottom:3px solid #0d3d1e;padding-bottom:2px}
 .sambutan-link a:hover{opacity:.85}
 
-/* ====== FOOTER ====== */
-#footer{background:var(--green);color:#fff;padding:60px 0 30px;font-family:'Poppins',sans-serif}
-.footer-wrap{max-width:1200px;margin:0 auto;padding:0 20px}
-.footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:30px}
-.footer-col h3{font-size:1.2rem;font-weight:800;margin-bottom:10px}
-.footer-col p{line-height:1.7;font-size:.95rem}
-.footer-col a{color:#fff;text-decoration:underline}
-.footer-col a:hover{opacity:.9}
-.footer-logo{width:80px;margin-bottom:10px;border-radius:12px;background:#fff;padding:6px}
-.footer-bottom{margin-top:40px;text-align:center;font-size:.9rem;opacity:.95;border-top:1px solid rgba(255,255,255,.35);padding-top:16px}
+/* ====== FOOTER (rapi) ====== */
+#footer{
+  background:var(--green);
+  color:#fff;
+  padding:70px 0 40px;
+  font-family:'Poppins',sans-serif;
+}
+.footer-wrap{
+  max-width:1200px;
+  margin:0 auto;
+  padding:0 24px;
+}
+.footer-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:40px;
+  align-items:start;
+}
+.footer-col{line-height:1.7}
+.footer-col h3{
+  font-size:1.15rem;
+  font-weight:800;
+  margin-bottom:12px;
+  border-left:5px solid #fff;
+  padding-left:10px;
+}
+.footer-col p,
+.footer-col a{
+  font-size:.95rem;
+  color:#fff;
+  text-decoration:none;
+  display:block;
+  margin-bottom:6px;
+}
+.footer-col a:hover{ text-decoration:underline; opacity:.9; }
+.footer-logo{
+  width:80px; margin-bottom:14px; border-radius:12px; background:#fff; padding:6px;
+  box-shadow:0 3px 12px rgba(0,0,0,.2);
+}
+.footer-bottom{
+  margin-top:50px;
+  text-align:center;
+  font-size:.9rem;
+  opacity:.95;
+  border-top:1px solid rgba(255,255,255,.3);
+  padding-top:20px;
+}
 
 /* ====== MOBILE ====== */
 @media (max-width:980px){
@@ -137,44 +186,86 @@ body{font-family:'Poppins',system-ui,Segoe UI,Roboto,Arial,sans-serif;color:#fff
   .dropdown-menu{position:static; box-shadow:none; background:none; min-width:unset; display:none}
   .dropdown-menu a{color:#fff; padding-left:28px}
   .dropdown:hover .dropdown-menu{display:block}
+
+  .footer-grid{text-align:center}
+  .footer-col h3{border:none;padding-left:0}
+  .footer-logo{margin:0 auto 16px}
 }
 
 /* Animasi teks hero */
 .fade{opacity:1;transition:opacity .5s ease}
 .fade.hide{opacity:0}
 
-/* ====== Opsional: Halaman Visi & Misi ====== */
-.hero-visi{position:relative;background:url('../img/hero1.jpg') center/cover no-repeat;height:300px;display:flex;align-items:center;justify-content:center;color:#fff}
-.hero-visi::before{content:"";position:absolute;inset:0;background:rgba(27,94,32,.5)}
+/* ====== Halaman Visi & Misi ====== */
+.hero-visi{
+  position:relative;
+  background:url('../img/hero1.jpg') center/cover no-repeat;
+  height:300px;
+  display:flex; align-items:center; justify-content:center;
+  color:#fff;
+  padding-top:110px;            /* ruang untuk navbar fixed */
+}
+.hero-visi::before{
+  content:""; position:absolute; inset:0; background:rgba(27,94,32,.5); pointer-events:none;
+}
 .hero-visi .text{position:relative;text-align:center;z-index:2}
 .hero-visi .text h1{font-size:clamp(32px,5vw,64px);font-weight:800;letter-spacing:1px}
 .hero-visi .text p{font-size:18px;opacity:.9;margin-top:6px}
-.visi-misi{background:#fff;color:#222;max-width:1000px;margin:60px auto;padding:50px 30px;border-radius:16px;box-shadow:0 8px 24px rgba(0,0,0,.08)}
+
+.visi-misi{
+  background:#fff;color:#222;max-width:1000px;margin:60px auto;padding:50px 30px;border-radius:16px;box-shadow:0 8px 24px rgba(0,0,0,.08)
+}
 .visi-misi h2{color:var(--green);margin:20px 0 10px;font-size:28px}
 .visi-misi p,.visi-misi li{font-size:17px;line-height:1.8}
 .visi-misi ol{margin-left:24px}
-@media (max-width:768px){.visi-misi{width:90%;padding:30px 20px}.hero-visi{height:220px}}
-/* --- FIX NAV DI HALAMAN VISI & MISI --- */
-.site-header{ z-index: 9999; }                 /* pastikan header di atas apa pun */
-.hero-visi{ padding-top: 96px; }               /* beri ruang setinggi header (atur ~86–110px sesuai tinggi headermu) */
-.hero-visi::before{ pointer-events: none; }    /* overlay tidak menghalangi klik */
-/* Header bar (dipakai di semua halaman, sama seperti home) */
-.header-bar{
-  max-width:1200px;
-  margin:10px auto 0;
-  padding:10px 18px;
-  border-radius:12px;
-  background:rgba(255,255,255,.06);
-  border:1px solid rgba(255,255,255,.18);
-  box-shadow:0 6px 22px rgba(0,0,0,.18) inset;
-  display:flex;
-  align-items:center;
-  gap:18px;
+@media (max-width:768px){
+  .visi-misi{width:90%;padding:30px 20px}
+  .hero-visi{height:220px}
+}
+/* ===== Footer rapi, tanpa logo dan sejajar ===== */
+
+/* sembunyikan logo di kolom pertama (tanpa ubah HTML) */
+.footer-col .footer-logo{ display:none !important; }
+
+/* pastikan semua kolom rata atas dan spacing konsisten */
+.footer-grid{
+  align-items: start;
+  gap: 32px;                 /* sedikit lebih rapat agar hemat ruang */
 }
 
-/* Pastikan header selalu di atas layer lain */
-.site-header{ z-index: 9999; }
+/* judul kolom dengan garis kiri yang seragam */
+.footer-col h3{
+  margin: 4px 0 10px;        /* kasih sedikit top-margin kecil */
+  padding-left: 10px;
+  border-left: 5px solid #fff;
+  line-height: 1.2;
+}
 
-/* Fix khusus halaman Visi & Misi */
-.hero-visi{ padding-top: 110px; }     /* beri ruang setinggi navbar fixed */
-.hero-visi::before{ pointer-events:none; }  /* overlay tidak menghalangi klik */
+/* teks paragraf & link seragam, rata kiri */
+.footer-col p,
+.footer-col a{
+  margin: 6px 0;
+  line-height: 1.7;
+  text-decoration: none;
+  color: #fff;
+  display: block;
+}
+
+/* hover link */
+.footer-col a:hover{ text-decoration: underline; opacity: .9; }
+
+/* kolom alamat: hapus margin yang terlalu besar */
+.footer-col.address p{ margin: 6px 0; }
+
+/* garis © bawah tetap rapi */
+.footer-bottom{
+  margin-top: 36px;            /* sedikit lebih dekat ke konten */
+  padding-top: 16px;
+  border-top: 1px solid rgba(255,255,255,.3);
+}
+
+/* responsive: center di hp */
+@media (max-width: 768px){
+  .footer-grid{ text-align: center; }
+  .footer-col h3{ border: none; padding-left: 0; }
+}
